@@ -1,0 +1,15 @@
+==Check disk volume in system
+df -h
+vgdisplay
+==Check partition add on and resize the volume
+cfdisk
+==Check the link of volume to file system
+lsblk
+==Check volume link
+lvdisplay
+==Command resize the volume linked to file system
+== This "/dev/ubuntu-vg/ubuntu-lv" take from "lvdisplay" command
+lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
+==Resize the volume link partition
+== This "/dev/mapper/ubuntu--vg-ubuntu--lv" take from "df -h" command
+resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
